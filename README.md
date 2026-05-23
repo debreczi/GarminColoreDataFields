@@ -115,6 +115,12 @@ Pop-Location
 
 If `monkeyc` is not on your `PATH`, use the full path to `monkeyc.bat` inside your Connect IQ SDK `bin` folder.
 
+## Download Release Builds
+
+Prebuilt `.prg` sideload builds are attached to GitHub Releases when available. Download the fields you want from the latest release, then copy them to your Edge as described below.
+
+These release binaries are unofficial sideload builds. They are not distributed through the Garmin Connect IQ Store, and device/firmware sideload behavior may vary.
+
 ## Install On Your Edge
 
 1. Connect your Edge by USB.
