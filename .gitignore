@@ -1,0 +1,40 @@
+# Garmin Connect IQ build output
+bin/
+*.prg
+*.prg.debug.xml
+*.iq
+*.mir
+*.mcgen
+external-mir/
+internal-mir/
+gen/
+
+# Garmin signing keys and private credentials
+developer_key
+developer_key.*
+*.der
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local notes / scratch context
+chat.md
+
+# Java helper build output
+*.class
+
+# Editor and OS files
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+~$*

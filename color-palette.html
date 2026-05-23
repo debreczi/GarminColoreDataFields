@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Color BG Zone Palette</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 32px;
+      color: #222;
+      background: #f6f6f6;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      max-width: 960px;
+    }
+
+    .swatch {
+      min-height: 110px;
+      padding: 16px;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-weight: 700;
+    }
+
+    .dark-text {
+      color: #111;
+    }
+
+    .light-text {
+      color: #fff;
+    }
+
+    .meta {
+      margin-top: 4px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+  <h1>Color BG Zone Palette</h1>
+  <div class="grid">
+    <div class="swatch dark-text" style="background:#fff;">
+      Default / No Data / Below Z1
+      <div class="meta">Graphics.COLOR_WHITE</div>
+    </div>
+    <div class="swatch light-text" style="background:#00f;">
+      Zone 1
+      <div class="meta">Graphics.COLOR_BLUE</div>
+    </div>
+    <div class="swatch dark-text" style="background:#0f0;">
+      Zone 2
+      <div class="meta">Graphics.COLOR_GREEN</div>
+    </div>
+    <div class="swatch dark-text" style="background:#ff0;">
+      Zone 3
+      <div class="meta">Graphics.COLOR_YELLOW</div>
+    </div>
+    <div class="swatch light-text" style="background:#f80;">
+      Zone 4
+      <div class="meta">Custom COLOR_ORANGE = #FF8800</div>
+    </div>
+    <div class="swatch light-text" style="background:#f00;">
+      Zone 5+
+      <div class="meta">Graphics.COLOR_RED</div>
+    </div>
+    <div class="swatch light-text" style="background:#800;">
+      Grade 15%+
+      <div class="meta">Custom COLOR_DARK_RED = #880000</div>
+    </div>
+  </div>
+</body>
+</html>
