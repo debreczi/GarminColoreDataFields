@@ -18,6 +18,7 @@ class PowerZoneField extends WatchUi.DataField {
     private var _zoneLabel;
     private var _zoneColor;
     private var _zones;
+    private var _ftp;
 
     function initialize() {
         DataField.initialize();
@@ -30,8 +31,9 @@ class PowerZoneField extends WatchUi.DataField {
         _zoneLabel = "NO POWER";
         _zoneColor = COLOR_DEFAULT_BG;
         _zones = null;
+        _ftp = null;
 
-        loadPowerZones();
+        loadPowerProfile();
     }
 
     function compute(info as Activity.Info) as Void {
@@ -53,7 +55,7 @@ class PowerZoneField extends WatchUi.DataField {
 
         dc.setColor(fgColor, _zoneColor);
         dc.clear();
-        dc.drawText(width / 2, (height * 7) / 100, Graphics.FONT_XTINY, _zoneLabel, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(width / 2, (height * 5) / 100, Graphics.FONT_TINY, _zoneLabel, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(width / 2, (height * 36) / 100, Graphics.FONT_NUMBER_MEDIUM, value, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
@@ -73,28 +75,44 @@ class PowerZoneField extends WatchUi.DataField {
         _threeSecondPower = (total + (_sampleSize / 2)) / _sampleSize;
     }
 
-    private function loadPowerZones() as Void {
+    private function loadPowerProfile() as Void {
         try {
             _zones = UserProfile.getPowerZones(Activity.SPORT_CYCLING);
         } catch (ex) {
             _zones = null;
         }
+
+        try {
+            _ftp = UserProfile.getFunctionalThresholdPower(Activity.SPORT_CYCLING);
+        } catch (ex) {
+            _ftp = null;
+        }
     }
 
     private function updateZone() as Void {
         if (_zones == null || _zones.size() < 2) {
-            loadPowerZones();
+            loadPowerProfile();
         }
 
-        if (_zones == null || _zones.size() < 2 || _threeSecondPower == null) {
+        if (_threeSecondPower == null) {
             _zone = 0;
             _zoneLabel = "POWER";
             _zoneColor = COLOR_DEFAULT_BG;
             return;
         }
 
-        _zone = zoneForValue(_threeSecondPower, _zones);
-        _zoneLabel = zoneLabel("PWR", _zone);
+        if (_zones != null && _zones.size() >= 2) {
+            _zone = zoneForValue(_threeSecondPower, _zones);
+        } else if (_ftp != null && _ftp > 0) {
+            _zone = zoneForFtp(_threeSecondPower, _ftp);
+        } else {
+            _zone = 0;
+            _zoneLabel = "NO ZONES";
+            _zoneColor = COLOR_DEFAULT_BG;
+            return;
+        }
+
+        _zoneLabel = zoneLabel(_zone);
         _zoneColor = zoneColor(_zone);
     }
 
@@ -112,12 +130,32 @@ class PowerZoneField extends WatchUi.DataField {
         return zones.size() - 1;
     }
 
-    private function zoneLabel(prefix as Lang.String, zone as Lang.Number) as Lang.String {
-        if (zone == 0) {
-            return prefix + " <Z1";
+    private function zoneForFtp(power as Lang.Number, ftp as Lang.Number) as Lang.Number {
+        var percent = (power * 100) / ftp;
+
+        if (percent <= 55) {
+            return 1;
+        } else if (percent <= 75) {
+            return 2;
+        } else if (percent <= 90) {
+            return 3;
+        } else if (percent <= 105) {
+            return 4;
+        } else if (percent <= 120) {
+            return 5;
+        } else if (percent <= 150) {
+            return 6;
         }
 
-        return prefix + " Z" + zone.format("%d");
+        return 7;
+    }
+
+    private function zoneLabel(zone as Lang.Number) as Lang.String {
+        if (zone == 0) {
+            return "<Z1";
+        }
+
+        return "Z" + zone.format("%d");
     }
 
     private function zoneColor(zone as Lang.Number) as Lang.Number {
