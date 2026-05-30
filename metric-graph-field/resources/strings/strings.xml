@@ -1,0 +1,23 @@
+<strings>
+    <string id="AppName">PWR HR CAD Graph</string>
+    <string id="SecondsPerPixelTitle">History: seconds per pixel</string>
+    <string id="OneSecond">1 second per pixel</string>
+    <string id="TwoSeconds">2 seconds per pixel</string>
+    <string id="ThreeSeconds">3 seconds per pixel</string>
+    <string id="FiveSeconds">5 seconds per pixel</string>
+
+    <string id="ShowPowerTitle">Show power</string>
+    <string id="PowerMinTitle">Power minimum</string>
+    <string id="PowerMaxTitle">Power maximum</string>
+    <string id="PowerOffsetTitle">Power offset</string>
+
+    <string id="ShowHeartRateTitle">Show heart rate</string>
+    <string id="HeartRateMinTitle">Heart-rate minimum</string>
+    <string id="HeartRateMaxTitle">Heart-rate maximum</string>
+    <string id="HeartRateOffsetTitle">Heart-rate offset</string>
+
+    <string id="ShowCadenceTitle">Show cadence</string>
+    <string id="CadenceMinTitle">Cadence minimum</string>
+    <string id="CadenceMaxTitle">Cadence maximum</string>
+    <string id="CadenceOffsetTitle">Cadence offset</string>
+</strings>

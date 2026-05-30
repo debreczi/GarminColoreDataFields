@@ -1,0 +1,49 @@
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <setting propertyKey="@Properties.SecondsPerPixel" title="@Strings.SecondsPerPixelTitle">
+        <settingConfig type="list">
+            <listEntry value="1">@Strings.OneSecond</listEntry>
+            <listEntry value="2">@Strings.TwoSeconds</listEntry>
+            <listEntry value="3">@Strings.ThreeSeconds</listEntry>
+            <listEntry value="5">@Strings.FiveSeconds</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.ShowPower" title="@Strings.ShowPowerTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.PowerMin" title="@Strings.PowerMinTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+    <setting propertyKey="@Properties.PowerMax" title="@Strings.PowerMaxTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+    <setting propertyKey="@Properties.PowerOffset" title="@Strings.PowerOffsetTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+
+    <setting propertyKey="@Properties.ShowHeartRate" title="@Strings.ShowHeartRateTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.HeartRateMin" title="@Strings.HeartRateMinTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+    <setting propertyKey="@Properties.HeartRateMax" title="@Strings.HeartRateMaxTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+    <setting propertyKey="@Properties.HeartRateOffset" title="@Strings.HeartRateOffsetTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+
+    <setting propertyKey="@Properties.ShowCadence" title="@Strings.ShowCadenceTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.CadenceMin" title="@Strings.CadenceMinTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+    <setting propertyKey="@Properties.CadenceMax" title="@Strings.CadenceMaxTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+    <setting propertyKey="@Properties.CadenceOffset" title="@Strings.CadenceOffsetTitle">
+        <settingConfig type="numeric"/>
+    </setting>
+</settings>

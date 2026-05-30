@@ -12,8 +12,21 @@ Instead of showing only a value, each field paints its entire background based o
 | Color BG PWR | `power-zone-field` | Rolling 3-second power | Garmin cycling power zone |
 | Color BG CAD | `cad-zone-field` | Current cadence | Custom cadence range |
 | Color BG GRADE | `grade-zone-field` | Estimated road grade | Garmin-like climb gradient palette |
+| PWR HR CAD Graph | `metric-graph-field` | Configurable rolling power, heart-rate, and cadence graph | Transparent background with overlaid colored traces |
 
 Each field is a separate Connect IQ data field, so you can place them independently in your Garmin Edge activity profiles.
+
+`PWR HR CAD Graph` is designed for the large box in a `3-B Fields` layout. It draws power, heart rate, and cadence on the same transparent graph. Each trace can be enabled independently and has configurable minimum, maximum, and offset settings. The history setting controls how many seconds each horizontal pixel represents: 1, 2, 3, or 5 seconds per pixel.
+
+For a sideloaded `.prg`, change the graph settings on the Edge itself. Open the activity profile's data screens, select the graph field's settings, then press the Edge menu button when prompted. Garmin Connect and Garmin Express do not expose settings for manually sideloaded apps.
+
+The default graph settings are:
+
+| Trace | Color | Minimum | Maximum | Offset |
+| --- | --- | --- | --- | --- |
+| Power | Blue | 0 W | 500 W | 0 |
+| Heart rate | Red | 80 bpm | 200 bpm | 0 |
+| Cadence | Green | 50 rpm | 120 rpm | +30 |
 
 ## Colors
 
@@ -68,7 +81,7 @@ The manifests currently target:
 - Edge 1040 / 1040 Solar
 - Edge 1050
 
-`Color BG PWR` requires newer Connect IQ support because it uses `UserProfile.getPowerZones()`. If your device does not support that API, build/use the HR, cadence, and grade fields instead or adjust the manifest and implementation for your model.
+`Color BG PWR` requires newer Connect IQ support because it uses `UserProfile.getPowerZones()`. If Garmin does not return a cycling power-zone array, the field falls back to the configured cycling FTP and standard 7-zone cycling percentages. If your device does not support the required APIs, build/use the HR, cadence, and grade fields instead or adjust the manifest and implementation for your model.
 
 ## Build
 
@@ -110,6 +123,10 @@ Pop-Location
 
 Push-Location grade-zone-field
 monkeyc -f monkey.jungle -o "..\bin\Color BG GRADE.prg" -y ..\developer_key.der
+Pop-Location
+
+Push-Location metric-graph-field
+monkeyc -f monkey.jungle -o "..\bin\PWR HR CAD Graph.prg" -y ..\developer_key.der
 Pop-Location
 ```
 

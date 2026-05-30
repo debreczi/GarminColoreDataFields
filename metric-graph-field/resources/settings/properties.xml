@@ -1,0 +1,18 @@
+<properties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <property id="SecondsPerPixel" type="number">1</property>
+
+    <property id="ShowPower" type="boolean">true</property>
+    <property id="PowerMin" type="number">0</property>
+    <property id="PowerMax" type="number">500</property>
+    <property id="PowerOffset" type="number">0</property>
+
+    <property id="ShowHeartRate" type="boolean">true</property>
+    <property id="HeartRateMin" type="number">80</property>
+    <property id="HeartRateMax" type="number">200</property>
+    <property id="HeartRateOffset" type="number">0</property>
+
+    <property id="ShowCadence" type="boolean">true</property>
+    <property id="CadenceMin" type="number">50</property>
+    <property id="CadenceMax" type="number">120</property>
+    <property id="CadenceOffset" type="number">30</property>
+</properties>
